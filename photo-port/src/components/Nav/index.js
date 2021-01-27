@@ -19,7 +19,7 @@ import React, { useEffect } from 'react';
         document.title = capitalizeFirstLetter(currentCategory.name);
       }, [currentCategory]);
 
-//MAIN ELEMENT SUDO HTML ELEMENT START HERE
+//MAIN ELEMENT SUDO HTML JSX ELEMENT START HERE
 
   return (
 <header>
