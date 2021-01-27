@@ -1,20 +1,18 @@
 import { capitalizeFirstLetter } from '../../utils/helpers';
-import photo from "../../assets/small/commercial/0.jpg";
+import PhotoList from "../PhotoList"
 
-function Gallery() {
-    const currentCategory = {
-        name: "commercial",
-        description:
-          "Photos of grocery stores, food trucks, and other commercial projects",
-      };
+const Gallery = ({currentCategory}) => {
+    // const currentCategory = {
+    //     name: "commercial",
+    //     description:
+    //       "Photos of grocery stores, food trucks, and other commercial projects",
+    //   };
 
     return (
         <section>
             <h1>{capitalizeFirstLetter(currentCategory.name)}</h1>
             <p>{capitalizeFirstLetter(currentCategory.description)}</p>
-            <div className="flex-row">
-                <img src={photo} alt="Commercial Example" className="img-thumbnail mx-1"/>
-            </div>
+            <PhotoList category={currentCategory.name} />
         </section>
     )
 }
