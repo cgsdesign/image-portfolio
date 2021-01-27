@@ -1,1 +1,19 @@
-n[p]
+npx create-react-app photo-port
+
+
+.forEach vs .map
+
+.map is faster in general and returns an object inherently - it gives a new array
+.forEach returns undefined - exicutes a call back dies not atomatically return an array
+.forEach may be better wants to do something with the data but do not want a new array
+        if dont know, use .map 
+
+.filter select certian items of an array - it returns an array with a subset of the array 
+
+
+rm -r node_modules to delete at root level when at root level in directory on terminal
+class=megaFunction
+
+
+
+start static then make advanced AFTER with STATE
