@@ -1,28 +1,25 @@
-import React from 'react';
+import { capitalizeFirstLetter } from "../../utils/helpers";
+import React, { useEffect } from 'react';
 //below the categories array is made THEN it is called with .map to generate all the li items
 //NOTE: className = class in normal html
-  //Whenever we use .map we MUST use a key
-  //we use a function declaration when calling categorySelect so it does not "auto click on componant load"
-function Nav() {
+      //Whenever we use .map we MUST use a key
+      //we use a function declaration when calling categorySelect so it does not "auto click on componant load"
+  //{currentCategory.name === category.name && 'navActive'}
+      /* above line in class is the same as adding an if statement if the current category page = this category make it bold*/
 
-  const categories = [
-    {
-      name: "commercial",
-      description:
-        "Photos of grocery stores, food trucks, and other commercial projects",
-    },
-    { name: "portraits", 
-    description: "Portraits of people in my life" },
-    { name: "food", 
-    description: "Delicious delicacies" },
-    {
-      name: "landscape",
-      description: "Fields, farmhouses, waterfalls, and the beauty of nature",
-    },
-  ];
-  function categorySelected(name) {
-    console.log(`${name} clicked`)
-  }
+  function Nav(props) {
+      const {
+        categories = [],
+        setCurrentCategory,
+        currentCategory,
+      } = props;
+
+      //if currentCategory changes => rerender so document.title will change
+      useEffect(() => {
+        document.title = capitalizeFirstLetter(currentCategory.name);
+      }, [currentCategory]);
+
+//MAIN ELEMENT SUDO HTML ELEMENT START HERE
 
   return (
 <header>
@@ -42,9 +39,14 @@ function Nav() {
         <span>Contact</span>
       </li>
       {categories.map((category) => (
-        <li className="mx-1" key={category.name}>
-          <span onClick={() => categorySelected(category.name)} >
-            {category.name}
+        <li className={`mx-1 ${currentCategory.name === category.name && 'navActive'}`}         
+        key={category.name}>
+          <span 
+            onClick={() => 
+              {setCurrentCategory(category)
+            }} 
+          >
+            {capitalizeFirstLetter(category.name)}
           </span>
         </li>
       ))}
